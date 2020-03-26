@@ -14,7 +14,31 @@ namespace Text_Scrambler
             {
                 try
                 {
+                    Random random = new Random();
 
+                    for (; ; )
+                    {
+                        List<string> scramble = new List<string>();
+
+                        Console.Write("Text to Scramble: ");
+                        string scrambleText = Console.ReadLine();
+
+                        foreach (char i in scrambleText)
+                        {
+                            scramble.Add(Convert.ToString(i));
+                        }
+
+                        string newText = "";
+
+                        for (; 0 < scramble.Count;)
+                        {
+                            int rand = random.Next(0, scramble.Count);
+                            newText += scramble[rand];
+                            scramble.Remove(scramble[rand]);
+                        }
+
+                        Console.WriteLine($"Scrambled: \"{newText}\" \n");
+                    }
                 }
 
                 catch (Exception e)
